@@ -28,12 +28,17 @@ COUPANG_VENDOR_ID = os.getenv("COUPANG_VENDOR_ID")
 app = FastAPI(
     title=APP_TITLE,
     version=APP_VERSION,
+    servers=[
+        {
+            "url": "https://sourcing-actions-api.onrender.com",
+            "description": "Render production server"
+        }
+    ],
     description=(
         "Actions API for product sourcing, profit estimation, marketplace recommendation, "
         "dropship checks, trend analysis, listing content generation, and draft publishing."
     ),
 )
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
